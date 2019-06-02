@@ -3,15 +3,18 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>lengjia&#39;s blog</title>
+  <title>test mathjax | lengjia&#39;s blog</title>
   <meta name="author" content="WeiweiChen">
   
-  <meta name="description" content="mcdmmcdxmsm “sm”">
+  <meta name="description" content="\begin{eqnarray}
+\nabla\cdot\vec{E} &amp;=&amp; \frac{\rho}{\epsilon_0} \\
+\nabla\cdot\vec{B} &amp;=&amp; 0 \\
+\nabla\times\vec{E} &amp;=&amp; -\frac{\partial B}{\partial t} ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="test mathjax">
   <meta property="og:site_name" content="lengjia&#39;s blog">
 
   
@@ -122,7 +125,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header page-header-inverse ">		
-			<h1 class="title title-inverse "> </h1>
+			<h1 class="title title-inverse "> test mathjax</h1>
 		</div>		
 	
 
@@ -142,8 +145,13 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <h1 id="mcdm"><a href="#mcdm" class="headerlink" title="mcdm"></a>mcdm</h1><p>mcdxms<br>m “sm”</p>
-	  
+	  <script type="math/tex; mode=display">
+\begin{eqnarray}
+\nabla\cdot\vec{E} &=& \frac{\rho}{\epsilon_0} \\
+\nabla\cdot\vec{B} &=& 0 \\
+\nabla\times\vec{E} &=& -\frac{\partial B}{\partial t} \\
+\nabla\times\vec{B} &=& \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)
+\end{eqnarray}</script>	  
 	</div>
 
 	<!-- recommended posts -->
@@ -154,14 +162,14 @@ var _hmt = _hmt || [];
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2019/06/02/test/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2019/06/01/AutoEncoder-到Beta-VAE/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2019/06/02/利用GAN进行图像补全/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -211,7 +219,7 @@ var _hmt = _hmt || [];
 		   no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
 		   go_to_comment: "去留言",
 		   no_issue: "no_issue",
-		   issue_title: "",
+		   issue_title: "test mathjax",
 		   issue_id: "",
 		   btn_class: "btn btn-primary",
 		   comments_target: "#comment-thread",
@@ -318,8 +326,24 @@ var _hmt = _hmt || [];
   }
   window.addEventListener('DOMContentLoaded', Highlighting, false);
   window.addEventListener('load', Highlighting, false);
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

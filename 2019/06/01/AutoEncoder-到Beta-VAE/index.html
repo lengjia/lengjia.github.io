@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
 	  <blockquote>
 <p>变分编码器（Variational AutoEncoders）目的是用来使用隐空间变量（latent space variable）来表示高维空间数据。本文从最初的autoencoder讲起，过渡到变分编码器（VAE）以及它的最近改版 beta-VAE的基本想法和数学推导。</p>
 </blockquote>
-<p>AutoEncoder使用隐变量来重构高维空间数据，一般的做法是使用神经网络进行编码表示，然后再用另外一个神经网络来将此编码重构为原来的数据。 这样做的一个很大的好处是维度缩减，我们就可以使用更低维度的数据将高维数据进行表示，在很多的应用方面都可以发挥作用， 如搜索、数据压缩等，甚至也能帮我们理解高维数据之间的联系。</p>
+<p>AutoEncoder使用隐变量来重构高维空间数据，一般的做法是使用神经网络进行编码表示，然后再用另外一个神经网络来将此编码重构为原来的数据。 这样做的一个很大的好处是维度缩减，我们就可以使用更低维度的数据将高维数据进行表示，在很多的应用方面都可以发挥作用， 如搜索、数据压缩等，甚至也能帮我们理解高维数据之间的联系。$test$, $\mathcal{D}$</p>
 <h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><div class="table-container">
 <table>
 <thead>
@@ -159,9 +159,7 @@ var _hmt = _hmt || [];
 <tbody>
 <tr>
 <td style="text-align:left">$\mathcal{D}$</td>
-<td>数据集：$\mathcal{D}=\left\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right\}$，包含有 $n$ 个数据，$\</td>
-<td>\mathcal{D}\</td>
-<td>=n$</td>
+<td>数据集：$\mathcal{D}=\left\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right\}$，包含有 $n$ 个数据，$\rvert\mathcal{D}\rvert=n$</td>
 </tr>
 <tr>
 <td style="text-align:left">$\mathbf{x}^{(i)}$</td>
@@ -196,13 +194,11 @@ var _hmt = _hmt || [];
 <td>解码函数：  $\theta$ 为函数参数</td>
 </tr>
 <tr>
-<td style="text-align:left">$q_{\phi}(\mathbf{z} \</td>
-<td>\mathbf{x})$</td>
+<td style="text-align:left">$q_{\phi}(\mathbf{z}  \rvert \mathbf{x})$</td>
 <td>测量得到的后验概率，也被称为 <em>概率编码</em></td>
 </tr>
 <tr>
-<td style="text-align:left">$p_{\theta}(\mathbf{x} \</td>
-<td>\mathbf{z})$</td>
+<td style="text-align:left">$p_{\theta}(\mathbf{x} \rvert \mathbf{z})$</td>
 <td>从隐空间生成真实数据的释然函数，也被称为 <em>概率解码</em></td>
 </tr>
 </tbody>
@@ -214,7 +210,7 @@ var _hmt = _hmt || [];
 <li><strong>Encoder Network</strong>： 将原始数据编码为低维隐向量。</li>
 <li><strong>Decoder Network</strong>： 从隐编码中重构出原始数据。</li>
 </ul>
-<p><img src="./autoencoder-architecture.png" alt="avatar"></p>
+<p><img src="https://res.cloudinary.com/dfjubhyzm/image/upload/v1559484869/blog/AutoEncoder/autoencoder-architecture_dskea0.png" alt="avatar"></p>
 <center>Fig. 1. Illustration of autoencoder model architecture.</center>
 
 
@@ -240,7 +236,7 @@ var _hmt = _hmt || [];
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/2019/06/02/test/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+    	<li class="prev"><a href="/2019/06/02/利用GAN进行图像补全/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
@@ -403,8 +399,24 @@ var _hmt = _hmt || [];
   }
   window.addEventListener('DOMContentLoaded', Highlighting, false);
   window.addEventListener('load', Highlighting, false);
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

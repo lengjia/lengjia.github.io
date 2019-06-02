@@ -176,15 +176,11 @@ var _hmt = _hmt || [];
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2019/06/02/test-mathjax/"><i class="fa fa-file-o"></i>test mathjax</a>
+      </li>
+    
+      <li>
         <a href="/2019/06/02/利用GAN进行图像补全/"><i class="fa fa-file-o"></i>利用GAN进行图像补全</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/test/"><i class="fa fa-file-o"></i></a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/test/"><i class="fa fa-file-o"></i></a>
       </li>
     
       <li>
@@ -274,8 +270,24 @@ var _hmt = _hmt || [];
   }
   window.addEventListener('DOMContentLoaded', Highlighting, false);
   window.addEventListener('load', Highlighting, false);
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>
