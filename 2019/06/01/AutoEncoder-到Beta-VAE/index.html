@@ -6,7 +6,9 @@
   <title>AutoEncoder 到Beta-VAE | lengjia&#39;s blog</title>
   <meta name="author" content="WeiweiChen">
   
-  <meta name="description" content="\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}">
+  <meta name="description" content="变分编码器（Variational AutoEncoders）目的是用来使用隐空间变量（latent space variable）来表示高维空间数据。本文从最初的autoencoder讲起，过渡到变分编码器（VAE）以及它的最近改版 beta-VAE的基本想法和数学推导。
+
+AutoEncoder">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -142,7 +144,91 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <script type="math/tex; mode=display">\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}</script>	  
+	  <blockquote>
+<p>变分编码器（Variational AutoEncoders）目的是用来使用隐空间变量（latent space variable）来表示高维空间数据。本文从最初的autoencoder讲起，过渡到变分编码器（VAE）以及它的最近改版 beta-VAE的基本想法和数学推导。</p>
+</blockquote>
+<p>AutoEncoder使用隐变量来重构高维空间数据，一般的做法是使用神经网络进行编码表示，然后再用另外一个神经网络来将此编码重构为原来的数据。 这样做的一个很大的好处是维度缩减，我们就可以使用更低维度的数据将高维数据进行表示，在很多的应用方面都可以发挥作用， 如搜索、数据压缩等，甚至也能帮我们理解高维数据之间的联系。</p>
+<h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><em>Symbol</em></th>
+<th><em>Mean</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$\mathcal{D}$</td>
+<td>数据集：$\mathcal{D}=\left\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right\}$，包含有 $n$ 个数据，$\</td>
+<td>\mathcal{D}\</td>
+<td>=n$</td>
+</tr>
+<tr>
+<td style="text-align:left">$\mathbf{x}^{(i)}$</td>
+<td>每一个数据为 $d$ 维向量，$\mathbf{x}^{(i)}=\left[x_{1}^{(i)}, x_{2}^{(i)}, \dots, x_{d}^{(i)}\right]$</td>
+</tr>
+<tr>
+<td style="text-align:left">$\mathbf{x}$</td>
+<td>从 $\mathcal{D}$ 中采样出一个数据点，$\mathbf{x} \in \mathcal{D}$</td>
+</tr>
+<tr>
+<td style="text-align:left">$\mathbf{x}^{\prime}$</td>
+<td>从原数据 $\mathbf{x}$ 恢复后的数据</td>
+</tr>
+<tr>
+<td style="text-align:left">$\tilde{\mathbf{x}}$</td>
+<td>原数据 $\mathbf{x}$ 中丢失的信息</td>
+</tr>
+<tr>
+<td style="text-align:left">$\mathbf{Z}$</td>
+<td>原数据的隐变量表示</td>
+</tr>
+<tr>
+<td style="text-align:left">$a_{j}^{(l)}$</td>
+<td>神经网络中第 $l$ 层中 第 $j$ 个神经元</td>
+</tr>
+<tr>
+<td style="text-align:left">$g_{\phi}( .)$</td>
+<td>编码函数： $\phi$ 为此函数参数</td>
+</tr>
+<tr>
+<td style="text-align:left">$f_{\theta}( .)$</td>
+<td>解码函数：  $\theta$ 为函数参数</td>
+</tr>
+<tr>
+<td style="text-align:left">$q_{\phi}(\mathbf{z} \</td>
+<td>\mathbf{x})$</td>
+<td>测量得到的后验概率，也被称为 <em>概率编码</em></td>
+</tr>
+<tr>
+<td style="text-align:left">$p_{\theta}(\mathbf{x} \</td>
+<td>\mathbf{z})$</td>
+<td>从隐空间生成真实数据的释然函数，也被称为 <em>概率解码</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="AutoEncoder"><a href="#AutoEncoder" class="headerlink" title="AutoEncoder"></a>AutoEncoder</h2><p>AutoEncoder 使用神经网络以非监督学习方式学习到一个恒等函数（identity function）,以用来重构原始数据。 最开始是用于数据压缩方面的研究成果，最开始的想法源自于 <a href="https://en.wikipedia.org/wiki/Autoencoder" target="_blank" rel="noopener">1980年份</a> 并被<a href="https://pdfs.semanticscholar.org/c50d/ca78e97e335d362d6b991ae0e1448914e9a3.pdf" target="_blank" rel="noopener"> Hinton &amp; Salakhutdinov, 2006</a> 进一步优化。</p>
+<p>其思想如下图所示。 主要由两个部分组成：</p>
+<ul>
+<li><strong>Encoder Network</strong>： 将原始数据编码为低维隐向量。</li>
+<li><strong>Decoder Network</strong>： 从隐编码中重构出原始数据。</li>
+</ul>
+<p><img src="./autoencoder-architecture.png" alt="avatar"></p>
+<center>Fig. 1. Illustration of autoencoder model architecture.</center>
+
+
+
+
+
+
+
+
+
+
+
+
+	  
 	</div>
 
 	<!-- recommended posts -->
@@ -153,6 +239,16 @@ var _hmt = _hmt || [];
 	<div class="pagination">
 <ul class="pagination">
 	 
+				
+    	<li class="prev"><a href="/2019/06/02/test/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+          <li class="next disabled"><a>下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>
+        
+	
 </ul>
 </div>
 
